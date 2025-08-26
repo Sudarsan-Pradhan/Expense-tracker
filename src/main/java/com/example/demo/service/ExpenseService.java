@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.ExpenseEntity;
 import com.example.demo.repository.ExpenseRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -23,7 +24,7 @@ public class ExpenseService {
     }
 
     public List<ExpenseEntity> getAllExpenses(){
-        return expenseRepository.findAll();
+        return expenseRepository.findAll(Sort.by("id").ascending());
     }
 
     public Optional<ExpenseEntity> getExpenseById(@PathVariable Long id) {
